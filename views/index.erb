@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Haguluma blog</title>
+		<link href="/css/init.css" rel="stylesheet">
+		<link href="/css/index.css" rel="stylesheet">
+		<link href="/css/talk.css" rel="stylesheet">
+		<link href="/css/clock.css" rel="stylesheet">
+		<link href="/css/loginform.css" rel="stylesheet">
+		<link href="/css/alert.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
+		<!--<script src="/js/jquery-3.1.1.min.js"></script>-->
+		<script src="/js/alert.js"></script>
+		<script src="/js/talk.js"></script>
+		<script src="/js/clock.js"></script>
+		<script src="/js/loginform.js"></script>
+		<script src="/js/index.js"></script>
+	</head>
+	<body>
+		<nav id="top_menu">
+			<div id="menu1" class="menu_button" onclick='show_talkindex();'>Talk</div>
+			<div id="menu5" class="menu_button" onclick='show_loginindex();'>Login</div>
+			<div id="menu2" class="menu_button">in dev</div>
+			<div id="menu3" class="menu_button">in dev</div>
+			<div id="menu4" class="menu_button">in dev</div>
+		</nav>
+		<header>
+			<img id="miku" src="../sysimg/_sleep1.png"></div>
+			<div id="clockwindow">
+				<div id="clock_plate">
+					<div id='img1' class="clockimg rotate"></div>
+					<div id='img2' class="clockimg rotate2"></div>
+					<!--<div id='img3' class="clockimg"></div>-->
+					<div id="clock">
+						<div id="h" class="clocktime"></div><div class="token">:</div><div class="clocktime" id="m"></div><div class="token">:</div><div class="clocktime" id="s"></div>
+					</div>
+				</div>
+			</div>
+			<div id="title_logo">
+				<h1>はぐるまブログ</h1>
+			</div>
+		</header>
+		<div class="reload_button" onclick="reload_talk();">Reload</div>
+		<div id="alert_box1"></div>
+		<div id="alert_box2"></div>
+		
+		<div id="content">
+			
+			<div id="login_index">
+				<div id="loginform">
+					<h1>Set HandleName</h1>
+					<label>Guest's HandleName</label><br>
+					<input id='handlename' type="text"><br><br>
+					<val class="button" onclick='set_handlename();'>Update</val>
+					<h1>Login here !</h1>
+					<label>Mail</label><br>
+					<input id="login_mail" type='email'><br>
+					<label>Password</label><br>
+					<input id="login_pass" type="password"><br><br>
+					<val class="button" onclick='trylogin();'>Login</val>
+					<h1>Regist here !</h1>
+					<label>Mail</label><br>
+					<input id='res_mail' type='email'><br>
+					<label>Password</label><br>
+					<input id='res_pass' type="password"><br><br>
+					<val class="button" onclick='registmember();'>Regist</val>
+				</div>
+				<div id="profile">
+					<h1>Your Profile</h1>
+					<div id="my_profile">
+						<label>profile ID</label><br>
+						<input id="profile_ID" type='text'><br>
+						<div style='margin-top : 5px' class="button" onclick='upload_ID();'>Upload ID</div><br>
+						<label>profile image</label><br>
+						<img src = '/sysimg/no_image.png' id="profile_img"></img>
+						<br><input id="profileimg_file" type="file"><br><br>
+						<div class="button" onclick='upload_img();'>Upload profile image</div><br>
+						<label>self-introduction</label>
+						<textarea id="profile_textarea"></textarea>
+						<div style='margin-top : 5px' class="button" onclick='upload_selfintro();'>Upload self-introduction</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="writing_pad" class="pad">
+					<div onClick="close_obj('#writing_pad');" class="button">Back</div>
+					<br><label>タイトル　　　<input id="talk_title" type="text"></label><br><br>
+					<input id='submit_talk_file' type='file' name='input_themeimg'><br><br>
+					<label>本文<br><textarea id="talk_comment"></textarea></label>
+					<br><div onClick="submit_talk();" class="button submit">投稿</div>
+			</div>
+			
+			<div id="talk_index">
+				<div id="writing_pad_openbutton" class = 'button' onclick="open_obj('#writing_pad',5)">記事を書く</div>
+				<div id="theme_list"></div>
+				<div id="talk_selecter">
+					<div class='button' onclick='talk_list("back")'>≪back</div>
+					<div class='button' onclick='talk_list("next")'>next≫</div>
+				</div>
+				<div id='talk_template'>
+					<div class="button" onClick="talk_back()">Back</div>
+					<div id='template_header'>
+						<div id='template_title'>
+							<div class="theme_imagebox"></div>
+							<div class="theme_titlebox">
+								<small id="top_theme_date"></small>
+								<div id="top_theme_title"></div>
+							</div>
+						</div>
+						<div id='author_comment'></div>
+					</div>
+					<!--<div id='comment_list'>-->
+					<table id="chattable"　cellspacing="0" cellpadding="5"></table>
+					<div id="comment_pad" class="pad">
+						<input type='file' name='input_commentimg' id="guest_comment_file" style='margin-bottom : 5px;'><!--修正されたい-->
+						<textarea id="guest_talk_comment"></textarea><br>
+						<div style="font-size : 12px;" onClick="submit_comment();" class="button submit" id="comment_subbmit_button">コメント</div>
+					</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		<footer>@Haguluma   All rights reserved</footer>
+	</body>
+</html>

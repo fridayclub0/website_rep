@@ -1,0 +1,65 @@
+
+#loginform {
+	width : 46%;
+	float : left;
+	text-align : center;
+	padding : 10px;
+	background-color : rgba(0,0,0,0.3);
+	margin : 2%;
+}
+#profile {
+	opacity : 0;
+	width : 46%;
+	float : left;
+	text-align : center;
+	padding : 10px;
+	background-color : rgba(0,0,0,0.3);
+	margin : 2%;
+}
+#my_profile {
+}
+#profile_img {
+	margin : 5px 0 10px 0;
+	width : 200px;
+	height : 200px;
+}
+#profile_textarea {
+	width : 90%;
+	height : 200px;
+}
+
+
+
+@media (max-width: 600px){
+
+#loginform {
+	width : 96%;
+	float : left;
+	text-align : center;
+	padding : 10px;
+	background-color : rgba(0,0,0,0.3);
+	margin : 2%;
+}
+#profile {
+	opacity : 0;
+	width : 96%;
+	float : left;
+	text-align : center;
+	padding : 10px;
+	background-color : rgba(0,0,0,0.3);
+	margin : 2%;
+}
+#my_profile {
+}
+#profile_img {
+	margin : 5px 0 10px 0;
+	width : 200px;
+	height : 200px;
+}
+#profile_textarea {
+	width : 90%;
+	height : 200px;
+}
+
+
+}

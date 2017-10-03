@@ -1,0 +1,4 @@
+{"date":"2017-06-10 10:25:12","commenter_sysid":"GtIGGaRUmK","comment":"ログインしてコメントするとこんな感じ","imgpass":"no_image.png","hash":"くすろ"}
+{"date":"2017-06-10 10:25:36","commenter_sysid":"0000000000","comment":"ゲストとしてコメントするとこんな感じ","imgpass":"no_image.png","hash":"たしほ"}
+{"date":"2017-06-10 10:26:27","commenter_sysid":"0000000000","comment":"ゲストのハンドルネームはメニュー[Login]から変えられるよ","imgpass":"no_image.png","hash":"はぐるま"}
+{"date":"2017-06-10 10:31:56","commenter_sysid":"GtIGGaRUmK","comment":"あとバグとか変な挙動とか見つけたらじゃんじゃん報告してくれい","imgpass":"no_image.png","hash":"ひせろ"}

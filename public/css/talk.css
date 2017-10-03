@@ -1,0 +1,252 @@
+
+#writing_pad_openbutton {}
+
+
+
+
+.button {
+	background-color : rgba(0,0,0,0.8);
+	color : white;
+	padding : 2 10px;
+	margin-bottom : 10px;
+	display : inline-block;
+	border : 1px solid black;
+}
+.closebutton:hover {
+	color : orange;
+}
+
+.submit {
+	margin-top : 10px;
+}
+
+#writing_pad {
+	z-index : -1;
+	position : absolute;
+	top : 0;
+	width : 100%;
+	left : -200%;
+	right : 0;
+	padding : 20px;
+	margin-bottom : 10px;
+	opacity : 0;
+}
+
+#writing_pad input[type='text'] {
+	width : 50%;
+	height : 20px;
+}
+#writing_pad textarea {
+	width : 100%;
+	height : 300px;
+}
+
+.theme {
+	width : 100%;
+	min-width : 300px;
+	padding : 10px;
+	margin-bottom : 20px;
+	background-color : rgba(255,255,255,0.5);
+	display : inline-table;
+	font-weight : bold;
+}
+.theme_titlebox small {
+	display : block;
+	font-size : 14px;
+	margin-bottom : 10px;
+}
+
+.theme_imagebox {
+	box-sizing : border-box;
+	float : left;
+	width:20%;
+	max-height : 150px;
+	border:solid 1px black;
+	overflow : hidden;
+}
+.title_image {
+	width : 100%;
+	height : auto;
+}
+.theme_titlebox {
+	font-size : 25px;
+	float : left;
+	padding-left : 5%;
+	width : 75%;
+	word-break : break-all;
+}
+
+
+#talk_template {
+	position : absolute;
+	top : 0;
+	left : -200%;
+	right : 0;
+	width : 100%;
+	/*background-color : white;*/
+	padding : 0px 5px;
+	opacity : 0;
+}
+#template_header {
+	background-color : rgba(255,255,255,0.5);
+	border : solid rgba(1,1,1,0.5) 1px;
+	min-width : 300px;
+	margin-bottom : 10px; 
+}
+#template_title {
+	display : inline-block;
+	border-bottom : dashed rgba(1,1,1,0.5) 2px;
+	padding : 10px;
+	width : 100%;
+}
+#author_comment {
+	padding : 30px;
+	word-break : break-all;
+}
+#commentpad_openbutton {
+	margin-top : 10px;
+}
+
+#comment_pad { 
+	z-index : -1;
+	border : 1px solid rgba(0,0,0,0.5);
+	/*
+	position : fixed;
+	top : 0;
+	bottom : 0;
+	left : -200%;
+	right : 0;
+	margin : auto;
+	*/
+	width : 100%;
+	padding : 10px 10px;
+	/*background-color : white;*/
+	margin-bottom : 50px;
+}
+#comment_subbmit_button {
+	margin-bottom : 0;
+}
+#guest_talk_comment {
+	width : 100%;
+	height : 80px;
+}
+
+#comment_list {
+	border-top : 1px solid black;
+	padding : 0 10px 20px 10px;
+	border-bottom : dotted 2px black;
+}
+
+.comment_header {
+	padding-top : 5px;
+	padding-bottom : 20px
+}
+.comment {
+	width : 100%;
+	word-break : break-all;
+	border-top : 2px solid rgba(0,0,0,0.3);
+}
+.commentbox {
+	padding : 10px 5px;
+}
+.commentbox p {
+	margin-top : 10px;
+}
+.comment_img {
+	width : 50%;
+}
+.commenter_img {
+	width : 80px;
+	height : 80px;
+	border-radius : 50%;
+	border : 3px rgba(0,0,0,0.4) solid;
+}
+.commenter_profile {
+	width : 90px;
+}
+#chattable {
+	width : 100%;
+	background-color : rgba(255,255,255,0.5);
+	border-collapse : collapse;
+	margin-bottom : 10px; 
+}
+
+
+
+
+
+
+@media (max-width: 600px){
+	
+.theme {
+	padding : 5px;
+}
+	
+.theme_imagebox {
+	width:20%;
+	max-height : 150px;
+	border:solid 1px black;
+	overflow : hidden;
+}
+
+.theme_titlebox {
+	font-size : 16px;
+	float : left;
+	padding-left : 3%;
+	width : 77%;
+	word-break : break-all;
+}
+
+.theme_titlebox small {
+	display : block;
+	font-size : 12px;
+	margin-bottom : 5px;
+}
+
+
+
+#talk_template {
+	position : absolute;
+	top : 0;
+	left : -200%;
+	right : 0;
+	width : 100%;
+	/*background-color : white;*/
+	padding : 10px 3px;
+	opacity : 0;
+}
+#template_header {
+	background-color : rgba(255,255,255,0.5);
+	border : solid rgba(1,1,1,0.5) 1px;
+	min-width : 300px;
+}
+#template_title {
+	display : inline-block;
+	border-bottom : dashed rgba(1,1,1,0.5) 2px;
+	padding : 5px;
+	width : 100%;
+}
+#author_comment {
+	padding : 10px;
+	word-break : break-all;
+}
+
+.commenter_img {
+	width : 50px;
+	height : 50px;
+	border-radius : 50%;
+	border : 3px rgba(0,0,0,0.4) solid;
+}
+.commenter_profile {
+	width : 60px;
+}
+.comment {
+	width : 100%;
+	word-break : break-all;
+	border-top : 2px solid rgba(0,0,0,0.3);
+	font-size : 
+}
+.commentbox {
+	padding : 3px 5px;
+}
+}

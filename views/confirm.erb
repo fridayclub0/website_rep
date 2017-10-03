@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>social blog</title>
+		<link href="/css/init.css" rel="stylesheet">
+		<link href="/css/index.css" rel="stylesheet">
+		<link href="/css/talk.css" rel="stylesheet">
+		<link href="/css/clock.css" rel="stylesheet">
+		<link href="/css/alert.css" rel="stylesheet">
+		<link href="/css/loginform.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
+		<script src="/js/alert.js"></script>
+		<script src="/js/talk.js"></script>
+		<script src="/js/clock.js"></script>
+		<script src="/js/loginform.js"></script>
+		
+		<script>
+			$(function(){
+				var res = <%= @res %>;
+				if (res != 'failed'){
+					 window.sessionStorage.setItem(['sysid'],res);
+				} else {
+					alert('Please access from the link in the confirmation email !');
+				}
+			});
+		</script>
+	</head>
+        <div id="alert_box1"></div>
+        <div id="alert_box2"></div>
+	<body style='text-align: center;'>
+		<h1 id='confirm_message'>パスワードを入力して下さい</h1>
+		<label>Password<input id="confirm_pass" type='password'></input></label><br><br>
+		<var class="button" onclick='confirm2();'>確認</var>
+		<footer>@Haguluma   All rights reserved</footer>
+	</body>
+</html>
