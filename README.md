@@ -2,7 +2,7 @@
 ## とりあえず手元で動かす
 
 - まずAptana等でプロジェクトを作成し、プロジェクト中にcloneする
-    - ```$ git clone https://github.com/haguluma/fridayclub-website.git```
+    - ```$ git clone https://github.com/fridayclub0/website_rep.git```
 - 必要なライブラリをインストール(cloneしたリポジトリ内で)
     - ```$ bundle install --path=vendor/bundle```
 - cloneしたリポジトリの親ディレクトリへ移動し、そこでsqliteデータベースを作成、データベース名はsocial.dbとする
