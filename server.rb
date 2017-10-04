@@ -10,7 +10,7 @@ require 'net/smtp'
 
 ActiveRecord::Base.establish_connection(
   "adapter" => "sqlite3",
-  "database" => "../socialc.db"
+  "database" => "./social.db"
 )
 
 class Talk < ActiveRecord::Base
