@@ -5,12 +5,11 @@
     - ```$ git clone https://github.com/fridayclub0/website_rep.git```
 - 必要なライブラリのインストールを行う。website_rep内で以下のコマンドを叩く(※ bundleをダウンロードしといてね)
     - ```$ bundle install --path=vendor/bundle```
-- cloneしたディレクトリ(website_rep)の親ディレクトリへ移動し、そこでsqliteデータベースを作成、データベース名はsocial.dbとする(※ sqliteをダウンロードしといてね)(※ server.rb,11行のActiveRecord::Base.establish_connection(...)にデータベースファイルへのパスを指定してある。今回はwebsite_repの親ディレクトリ)
+- データベースを設定する。cloneしたディレクトリ(website_rep)の親ディレクトリへ移動し、そこでsqliteデータベースを作成、データベース名はsocial.dbとする(※ データベースの設定がめんどいひとはダウンロードしたsocial.dbをwebsite_repの親ディレクトリにコピーすれば良い)(※ sqliteをダウンロードしといてね)(※ server.rb,11行のActiveRecord::Base.establish_connection(...)にデータベースファイルへのパスを指定してある。今回はwebsite_repの親ディレクトリ)
     - ```$ cd ..```
     - ```$ sqlite3 social.db```
     
 あとはデータベースのスキーマを設定する。テーブル構造は以下
-※ データベース設定がめんどいひとはダウンロードしたsocial.dbをwebsite_repの親ディレクトリにコピーすれば良い
 ```
 >CREATE TABLE members(
 sysid text primary key,
