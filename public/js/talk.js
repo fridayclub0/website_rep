@@ -140,7 +140,7 @@ function submit_comment() {
    	});
 	var ID = window.sessionStorage.getItem(['ID']);
 	var commenter_img_path = window.sessionStorage.getItem(['img']);
-   	var chattable = $('#chattable');
+   	var chattable = $('#talk_chattable');
 	var tr = $('<tr>');
 	tr.addClass('comment');
 	var commenter_profile = $('<td>').addClass('commenter_profile').attr('valign','top');
@@ -162,17 +162,17 @@ function submit_comment() {
 function talk_back(){
 	close_obj('#talk_template');
 	$('#writing_pad_openbutton').animate({'opacity' : 1},800);
-	$('#theme_list').animate({'opacity' : 1},800);
+	$('#talk_title_list').animate({'opacity' : 1},800);
 	$('#talk_selecter').animate({'opacity' : 1},800);
 	$('#guest_talk_comment').val('');
-	$("#guest_comment_file").val('');
+	$("#talk_guest_comment_file").val('');
 }
 
 function show_theme(sysid) {
-	$('#chattable').empty();
+	$('#talk_chattable').empty();
 	$('#template_title .theme_imagebox').empty();
 	$('#writing_pad_openbutton').animate({'opacity' : 0},800);
-	$('#theme_list').animate({'opacity' : 0},800);
+	$('#talk_title_list').animate({'opacity' : 0},800);
 	$('#talk_selecter').animate({'opacity' : 0},800);
 	$('body').animate({scrollTop: 0},1000);
 	window.sessionStorage.setItem(['now_viewing'],[sysid]);
@@ -192,9 +192,9 @@ function show_theme(sysid) {
 			console.log(data);
 			var temp_sysid = data_header['author'];
 			console.log(members_info);
-			$('#top_theme_date').text('date : '+data_header['date'].replace(/.000Z/g,'').replace(/T/g,' ')+'　ID : '+members_info[temp_sysid]['ID']);
-			$('#top_theme_title').text(data_header['title']);
-			$('#author_comment').html('<p>'+data_header['comment']+'</p>');
+			$('#talk_top_theme_date').text('date : '+data_header['date'].replace(/.000Z/g,'').replace(/T/g,' ')+'　ID : '+members_info[temp_sysid]['ID']);
+			$('#talk_top_theme_title').text(data_header['title']);
+			$('#talk_author_comment').html('<p>'+data_header['comment']+'</p>');
 			var init_imgpass = data_header['title_img'];
 			var theme_imagebox = $('#template_title .theme_imagebox');
 			var title_image = $('<img>').addClass('title_image');
@@ -205,7 +205,7 @@ function show_theme(sysid) {
 				var line = this;
 				temp_sysid = line['commenter_sysid'];
 				console.log(line);
-				var chattable = $('#chattable');
+				var chattable = $('#talk_chattable');
 				var tr = $('<tr>');
 				tr.addClass('comment');
 				var commenter_profile = $('<td>').addClass('commenter_profile').attr('valign','top');
@@ -243,7 +243,7 @@ function re_show_theme(sysid) {
 			
 			comments = data[1];
 			var members_info = data[2];
-			var chattable = $('#chattable');
+			var chattable = $('#talk_chattable');
 			chattable.empty();
 			$.each(comments,function(){
 				var line = this;
@@ -350,7 +350,7 @@ function talk_list(mode) {
        	data: formData,
        	success: function(data){
        		data = JSON.parse(data);
-       		$('#theme_list').empty();
+       		$('#talk_title_list').empty();
        		talk_no = data[0];
        		window.sessionStorage.setItem(['talk_no'],talk_no);
        		var talks = data[1];
@@ -373,7 +373,7 @@ function talk_list(mode) {
 				date = talk['date'].replace('T',' ');
 				date = date.replace('.000Z','');
 				theme_titlebox.append('<small>'+'date : '+date+'　　ID : '+author+'</small>'+talk['title']).addClass('theme_titlebox').appendTo(theme);
-				theme.appendTo('#theme_list');
+				theme.appendTo('#talk_title_list');
 				console.log(members_info);
 			});
        	},

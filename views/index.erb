@@ -96,29 +96,29 @@
 			
 			<div id="talk_index">
 				<div id="writing_pad_openbutton" class = 'button' onclick="open_obj('#writing_pad',5)">記事を書く</div>
-				<div id="theme_list"></div>
+				<div id="talk_title_list"></div>
 				<div id="talk_selecter">
 					<div class='button' onclick='talk_list("back")'>≪back</div>
 					<div class='button' onclick='talk_list("next")'>next≫</div>
 				</div>
 				<div id='talk_template'>
 					<div class="button" onClick="talk_back()">Back</div>
-					<div id='template_header'>
+					<div id='talk_template_header'>
 						<div id='template_title'>
 							<div class="theme_imagebox"></div>
 							<div class="theme_titlebox">
-								<small id="top_theme_date"></small>
-								<div id="top_theme_title"></div>
+								<small id="talk_top_theme_date"></small>
+								<div id="talk_top_theme_title"></div>
 							</div>
 						</div>
-						<div id='author_comment'></div>
+						<div id='talk_author_comment'></div>
 					</div>
 					<!--<div id='comment_list'>-->
-					<table id="chattable"　cellspacing="0" cellpadding="5"></table>
-					<div id="comment_pad" class="pad">
-						<input type='file' name='input_commentimg' id="guest_comment_file" style='margin-bottom : 5px;'><!--修正されたい-->
+					<table id="talk_chattable"　cellspacing="0" cellpadding="5"></table>
+					<div id="talk_comment_pad" class="pad">
+						<input type='file' name='input_commentimg' id="talk_guest_comment_file" style='margin-bottom : 5px;'><!--修正されたい-->
 						<textarea id="guest_talk_comment"></textarea><br>
-						<div style="font-size : 12px;" onClick="submit_comment();" class="button submit" id="comment_subbmit_button">コメント</div>
+						<div style="font-size : 12px;" onClick="submit_comment();" class="button submit" id="talk_comment_subbmit_button">コメント</div>
 					</div>
 					</div>
 				</div>

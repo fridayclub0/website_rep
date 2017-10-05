@@ -52,7 +52,7 @@ $(function(){
 		$('body').append(before);
 		$('header').addClass('sunset');
 		$('#writing_pad').addClass('sunset2');
-		$('#comment_pad').addClass('sunset2');
+		$('#talk_comment_pad').addClass('sunset2');
 	} else */
         if (6 < hour && hour <= 17) {
 		var before = $('<div>').addClass('daylightc');
@@ -60,14 +60,14 @@ $(function(){
 		$('body').append(before);
 		$('header').addClass('daylight');
 		$('#writing_pad').addClass('daylight2');
-		$('#comment_pad').addClass('daylight2');
+		$('#talk_comment_pad').addClass('daylight2');
 	} else {
 		var before = $('<div>').addClass('nightc');
 		$('#title_logo').css('color','grey');
 		$('body').append(before);
 		$('header').addClass('night');
 		$('#writing_pad').addClass('night2');
-		$('#comment_pad').addClass('night2');
+		$('#talk_comment_pad').addClass('night2');
 	}
 	
 	

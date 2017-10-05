@@ -87,7 +87,7 @@
 	padding : 0px 5px;
 	opacity : 0;
 }
-#template_header {
+#talk_template_header {
 	background-color : rgba(255,255,255,0.5);
 	border : solid rgba(1,1,1,0.5) 1px;
 	min-width : 300px;
@@ -99,7 +99,7 @@
 	padding : 10px;
 	width : 100%;
 }
-#author_comment {
+#talk_author_comment {
 	padding : 30px;
 	word-break : break-all;
 }
@@ -107,7 +107,7 @@
 	margin-top : 10px;
 }
 
-#comment_pad { 
+#talk_comment_pad { 
 	z-index : -1;
 	border : 1px solid rgba(0,0,0,0.5);
 	/*
@@ -164,7 +164,7 @@
 .commenter_profile {
 	width : 90px;
 }
-#chattable {
+#talk_chattable {
 	width : 100%;
 	background-color : rgba(255,255,255,0.5);
 	border-collapse : collapse;
@@ -215,7 +215,7 @@
 	padding : 10px 3px;
 	opacity : 0;
 }
-#template_header {
+#talk_template_header {
 	background-color : rgba(255,255,255,0.5);
 	border : solid rgba(1,1,1,0.5) 1px;
 	min-width : 300px;
@@ -226,7 +226,7 @@
 	padding : 5px;
 	width : 100%;
 }
-#author_comment {
+#talk_author_comment {
 	padding : 10px;
 	word-break : break-all;
 }
