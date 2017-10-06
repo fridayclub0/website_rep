@@ -10,7 +10,18 @@
 // 全てのセッションの削除
 //window.sessionStorage.clear();
 
-function gethash(){
+$(function(){
+	window.sessionStorage.setItem(['sysid'],['0000000000']);
+	window.sessionStorage.setItem(['talk_no'],0);
+	window.sessionStorage.setItem(['img'],'no_image.png');
+	window.sessionStorage.setItem(['ID'],'guest');
+	var hash = gethash();
+	window.sessionStorage.setItem(['hash'],[hash]);
+	$('#handlename').val(hash);
+	talk_list('begin');
+});
+
+function gethash(){ //ゲストネームとして用いる三文字のランダム文字列を出力する
 	var l = 3;
 // 生成する文字列に含める文字セット
 	var c = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわおん";
@@ -23,58 +34,37 @@ function gethash(){
 	return r;
 }
 
-$(function(){
-	window.sessionStorage.setItem(['sysid'],['0000000000']);
-	window.sessionStorage.setItem(['talk_no'],0);
-	window.sessionStorage.setItem(['img'],'no_image.png');
-	window.sessionStorage.setItem(['ID'],'guest');
-	var hash = gethash();
-	window.sessionStorage.setItem(['hash'],[hash]);
-	$('#handlename').val(hash);
-	talk_list('begin');
-	
-});
-
-function open_obj(id,zindex){
-	var obj = $(id);
-	obj.css('zIndex',zindex);
-	obj.animate({'left' : '0','opacity' : '1'},800);
-}
-
-function close_obj(id){
-	var obj = $(id);
-	obj.animate({'left' : '-200%','opacity' : '0'},800)
-	.queue( function(next){$(this).css('zIndex','-1').dequeue();});
-	//そのうちどうにかしたいよね
-	if(id='#writing_pad'){
-		$('#talk_title').val('');
-       	$('#talk_comment').val('');
-       	$('#submit_talk_file').val('');
-	}
-}
-
-function open_obj2(id,zindex){
-	var obj = $(id);
-	obj.css('zIndex',zindex);
-	obj.animate({'height' : '200px','opacity' : '1'},800);
-}
-
-function close_obj2(id){
-	var obj = $(id);
-	obj.animate({'height' : '0','opacity' : '0'},800)
-	.queue( function(next){$(this).css('zIndex','-1').dequeue();});
-}
-
-function handleFileUpload(files){
+function handleFileUpload(files){ //ファイルのアップロードに使う
+	var fd = new FormData();
 	console.log('uploadfile:'+files.length);
    	for (var i = 0; i < files.length; i++){
-       	var fd = new FormData();
+       	//var fd = new FormData(); <=変じゃね？直したけどエラーがあったら要チェック
        	fd.append('file', files[i]);
        	sendFileToServer(fd);
 	}
 }
 
-function submit_talk() {
+function sendFileToServer(formData){ //handleFileUploadで使っている。
+	console.log('sendfile');
+   	var uploadURL ="/upload"; //Upload URL
+   	var extraData ={}; //Extra Data.
+   	$.ajax({
+       	url: uploadURL,
+       	type: "POST",
+       	contentType: false,
+       	processData: false,
+       	cache: false,
+       	data: formData,
+       	success: function(data){
+       		window.sessionStorage.setItem(['upload_temp'],data);
+       	},
+       	error: function(XMLHttpRequest,textStatus,errorThrown){
+			sysalert1('Error : ' + errorThrown);
+		}
+   	});
+}
+
+function submit_talk() { //つぶやき投稿のための関数
 	var formData = new FormData();
 	var author_sysid=window.sessionStorage.getItem(['sysid']);
 	formData.append('file','none');
@@ -108,7 +98,7 @@ function submit_talk() {
    	
 }
 
-function submit_comment() {
+function submit_comment() { //つぶやきに対するコメントのための関数
 	var formData = new FormData();
 	var author_sysid =  window.sessionStorage.getItem(['sysid']);
 	var hash = window.sessionStorage.getItem(['hash']);
@@ -156,10 +146,7 @@ function submit_comment() {
    	$("input[name='input_commentimg']").val('');
 }
 
-	
-
-
-function talk_back(){
+function talk_back(){ //つぶやきタイトル一覧に戻る際につぶやき内容をクリーンする
 	close_obj('#talk_template');
 	$('#writing_pad_openbutton').animate({'opacity' : 1},800);
 	$('#talk_title_list').animate({'opacity' : 1},800);
@@ -168,7 +155,7 @@ function talk_back(){
 	$("#talk_guest_comment_file").val('');
 }
 
-function show_theme(sysid) {
+function show_theme(sysid) { //つぶやきの閲覧時につぶやき内容テンプレートをクリーンしつつ新しく選択された内容に更新する関数
 	$('#talk_chattable').empty();
 	$('#template_title .theme_imagebox').empty();
 	$('#writing_pad_openbutton').animate({'opacity' : 0},800);
@@ -233,7 +220,7 @@ function show_theme(sysid) {
 	},3000);
 }
 
-function re_show_theme(sysid) {
+function re_show_theme(sysid) {  //check_themeで使っている関数
 		$.ajax({
 		type : "POST",
 		url: "/fetch_theme",
@@ -253,7 +240,6 @@ function re_show_theme(sysid) {
 				tr.addClass('comment');
 				var commenter_profile = $('<td>').addClass('commenter_profile').attr('valign','top');
 				var commenter_img = $('<img>');
-//members_infoが定義されていないのに使えるのはなぜ？？？
 				commenter_img.addClass('commenter_img').attr('src','../img/'+members_info[temp_sysid]["img"]).appendTo(commenter_profile);
 				commenter_profile.appendTo(tr);
 				//'<img class="commenter_img" src="../img/'+members_info[temp_sysid]["img"]+'"></img>
@@ -275,7 +261,7 @@ function re_show_theme(sysid) {
 	});
 }
 
-function check_theme() {
+function check_theme() { //新しいコメントをチェックするのに一定時間ごとにデータベースにアクセスする仕組みになってる。ちょっとこれは直さないとまずい
 	var sysid = window.sessionStorage.getItem(['now_viewing']);
 	var check_no = window.sessionStorage.getItem(['check_no']);
 	var formData = new FormData();
@@ -301,42 +287,12 @@ function check_theme() {
 	});
 }
 
-
-
-function handleFileUpload(files){
-	console.log('uploadfile:'+files.length);
-   	for (var i = 0; i < files.length; i++){
-       	var fd = new FormData();
-       	fd.append('file', files[i]);
-       	sendFileToServer(fd);
-	}
-}
-function sendFileToServer(formData){
-	console.log('sendfile');
-   	var uploadURL ="/upload"; //Upload URL
-   	var extraData ={}; //Extra Data.
-   	$.ajax({
-       	url: uploadURL,
-       	type: "POST",
-       	contentType: false,
-       	processData: false,
-       	cache: false,
-       	data: formData,
-       	success: function(data){
-       		window.sessionStorage.setItem(['upload_temp'],data);
-       	},
-       	error: function(XMLHttpRequest,textStatus,errorThrown){
-			sysalert1('Error : ' + errorThrown);
-		}
-   	});
-}
-
-function reload_talk() {
+function reload_talk() { // reloadボタンを押した時に呼ばれる関数。つぶやきタイトルリストを読み込み直す
 	window.sessionStorage.setItem(['talk_no'],0);
 	talk_list('begin');
 }
 
-function talk_list(mode) {
+function talk_list(mode) { // 全てのつぶやきをデータベースから取ってきて表示する関数。アクセス時一番最初に呼ばれる関数でもある
 	formData = new FormData();
 	formData.append('mode',mode);
 	talk_no = window.sessionStorage.getItem(['talk_no']);
